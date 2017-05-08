@@ -1,0 +1,16 @@
+<h1>Contents#index</h1>
+<p>Find me in app/views/contents/index.html.erb</p>
+
+<%= link_to '새글', new_content_path %> <br> <br>
+
+<% @contents.each do |content| %>
+    <!--여기서 = 안쓰는 이유는 @contents가 Content.all이기 때문에 모든 contents를 다 불러온다.-->
+    <a href='contents/<%= content.id %>'> <%= content.title %> </a>
+    <!--<a href='<#%= content_path(content) %>'> <#%= content.title %> </a>-->
+    <!--이 방법도 가능하다.-->
+    <%= content.user.email %>
+    <%= link_to '수정', edit_content_path(content) %>
+    <%= link_to '삭제', content_path(content), method: :delete, data: {confirm: '정말 삭제?'} %> <br>
+<% end %>
+    
+    
