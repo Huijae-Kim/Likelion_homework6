@@ -9,8 +9,18 @@
     <!--<a href='<#%= content_path(content) %>'> <#%= content.title %> </a>-->
     <!--이 방법도 가능하다.-->
     <%= content.user.email %>
-    <%= link_to '수정', edit_content_path(content) %>
-    <%= link_to '삭제', content_path(content), method: :delete, data: {confirm: '정말 삭제?'} %> <br>
+    
+    <% if can? :update, content %> 
+    <!--현 유저가 이 컨텐츠에 대해 업데이트 권한이 있는가?-->
+        <%= link_to '수정', edit_content_path(content) %>
+        <%= link_to '삭제', content_path(content), method: :delete, data: {confirm: '정말 삭제?'} %> <br>
+    
+    <% elsif can? :destroy, content %> 
+    <!--현 유저가 이 컨텐츠에 대해 업데이트 권한이 있는가?-->
+        <%= link_to '삭제', content_path(content), method: :delete, data: {confirm: '정말 삭제?'} %> <br>
+    
+    <% end %>
+
 <% end %>
     
     

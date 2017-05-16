@@ -5,7 +5,7 @@
 
 <%= flash[:alert] %>
 <%= form_tag sessions_path do %>
-    Email : <%= email_field_tag :email %> <br>
+    Email or Nickname : <%= text_field_tag :email_nickname %> <br>
     Password : <%= password_field_tag :password %> <br>
     <%= submit_tag '로그인' %>
 <% end %>

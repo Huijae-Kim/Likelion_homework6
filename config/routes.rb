@@ -5,6 +5,10 @@ Rails.application.routes.draw do
 
   # get 'users/new'
   resources :users, only: [:new, :create]
+  
+  get 'users/edit1'
+  get 'users/edit2'
+  
 
   get 'comments/create'
 
